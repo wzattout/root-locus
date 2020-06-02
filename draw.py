@@ -60,30 +60,16 @@ def draw_asymptotes(poles_real, zeroes_real):
 def draw_curves(poles_real, poles_imaginary):
     points = []
     equation = break_away_and_crossing.extract_equation(poles_real, poles_imaginary)
-    for i in range(0, 700, 1):
-        equation = equation + 2000
+    for i in range(0, 800, 1):
+        equation = equation + 5000
         points.append(sympy.solve(equation, simplify=False, rational=False))
-    x1 = []
-    y1 = []
-    x2 = []
-    y2 = []
-    x3 = []
-    y3 = []
-    x4 = []
-    y4 = []
+    x = []
+    y = []
     for i in range(0, len(points), 1):
-        x1.append(complex(points[i][0]).real)
-        y1.append(complex(points[i][0]).imag)
-        x2.append(complex(points[i][1]).real)
-        y2.append(complex(points[i][1]).imag)
-        x3.append(complex(points[i][2]).real)
-        y3.append(complex(points[i][2]).imag)
-        x4.append(complex(points[i][3]).real)
-        y4.append(complex(points[i][3]).imag)
-    plt.plot(x1, y1)
-    plt.plot(x2, y2)
-    plt.plot(x3, y3)
-    plt.plot(x4, y4)
+        for j in range(0, len(points[i])):
+            x.append(complex(points[i][j]).real)
+            y.append(complex(points[i][j]).imag)
+    plt.plot(x, y, '.')
 
 
 def draw(poles_real, poles_imaginary, zeroes_real, zeroes_imaginary):
